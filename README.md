@@ -1,8 +1,7 @@
 # hoge-fuga
-Ko-Robo programming of second year student
+ Ko-Robo programming of second year student, made for Robocup-junior 2017.
 
-### outline
+### documentation
+documentation is located in doc/ directory.
 
-### install
-
-### directory-structure
+ 
