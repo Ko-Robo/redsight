@@ -58,4 +58,11 @@ $ sudo deluser -remove-home pi
 #### git
 
 #### dependmence tools
+language needed
+```
+
+Python 3.5.1 :: Anaconda 4.1.0 (64-bit)
+
+```
+
 #### test
