@@ -12,10 +12,10 @@ import numpy as np
 
 url_base = 'http://yann.lecun.com/exdb/mnist/'
 key_file = {
-  'train_img':'train-images-idx3-ubyte.gz',
+  #'train_img':'train-images-idx3-ubyte.gz',
   'train_label':'train-labels-idx1-ubyte.gz',
-  'test_img':'t10k-images-idx3-ubyte.gz',
-  'test_label':'t10k-labels-idx1-ubyte.gz'
+  #'test_img':'t10k-images-idx3-ubyte.gz',
+  #'test_label':'t10k-labels-idx1-ubyte.gz'
 }
 
 dataset_dir = os.path.dirname(os.path.abspath(__file__))
@@ -124,5 +124,6 @@ def load_mnist(normalize=True, flatten=True, one_hot_label=False):
       return (dataset['train_img'], dataset['train_label']), (dataset['test_img'], dataset['test_label']) 
 
 
-if __name__ == '__main__':
-  init_mnist()
+### test
+#init_mnist()
+print (dataset_dir)
