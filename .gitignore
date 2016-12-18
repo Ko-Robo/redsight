@@ -1,7 +1,12 @@
 # -*- mode: gitignore; -*-
 
+######## dataset ########
+*.gz
+# too big files
 
 
+
+######## emacs ##########
 
 *~
 \#*\#
@@ -51,7 +56,7 @@ flycheck_*.el
 
 
 
-
+########### c, gcc ##########
 
 # Prerequisites
 *.d
@@ -107,7 +112,7 @@ dkms.conf
 
 
 
-
+########### python ################
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -200,3 +205,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+*.pkl

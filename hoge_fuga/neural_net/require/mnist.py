@@ -1,4 +1,5 @@
 # coding: utf-8
+import config
 try:
   import urllib.request
 except ImportError:
@@ -12,13 +13,13 @@ import numpy as np
 
 url_base = 'http://yann.lecun.com/exdb/mnist/'
 key_file = {
-  #'train_img':'train-images-idx3-ubyte.gz',
+  'train_img':'train-images-idx3-ubyte.gz',
   'train_label':'train-labels-idx1-ubyte.gz',
-  #'test_img':'t10k-images-idx3-ubyte.gz',
-  #'test_label':'t10k-labels-idx1-ubyte.gz'
+  'test_img':'t10k-images-idx3-ubyte.gz',
+  'test_label':'t10k-labels-idx1-ubyte.gz'
 }
 
-dataset_dir = os.path.dirname(os.path.abspath(__file__))
+dataset_dir = config.mnist_dir # os.path.dirname(os.path.abspath(__file__))
 save_file = dataset_dir + "/mnist.pkl"
 
 train_num = 60000
@@ -125,5 +126,4 @@ def load_mnist(normalize=True, flatten=True, one_hot_label=False):
 
 
 ### test
-#init_mnist()
-print (dataset_dir)
+init_mnist()
