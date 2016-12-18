@@ -52,7 +52,7 @@ def softmax_loss(x, t):
 
 
 ### test
-
+'''
 import matplotlib.pylab as plt
 
 x = np.arange(-5.0, 5.0, 0.1)
@@ -74,3 +74,4 @@ for i in range(len(y)) :
   plt.plot(x,y[i])
 
 plt.show()
+'''
