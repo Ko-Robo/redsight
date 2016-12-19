@@ -23,13 +23,11 @@ class Layer:
     self.f = activ_func
     self.df = d_active_func
 
-    self.x = np.zeros(self.input_size)
     self.y = np.zeros(self.output_size)
     self.a = self.y
 
 
   def layer_output (self, x):
-    self.x = x
     self.a = layer_a_vals(x, self.w, self.b)
     self.y = layer_output(self.f, self.a)
     return self.y
@@ -57,7 +55,7 @@ class NeuralNet:
     self.layer_data_list = layer_data_list
     self.layer_length = len(self.layer_data_list)
     self.labels = {}
-    
+    self.output_vec = []
     
     self.layer_list = \
       list(map(lambda data:Layer(data[0], data[1], data[2], data[3]),
@@ -65,9 +63,12 @@ class NeuralNet:
     
       
   def forward (self, input_vec):
-    out = functools.reduce(lambda in_v, layer : layer.layer_output(in_v),
-                           self.layer_list, input_vec)
-    print(out)
+    self.output_vec = functools.reduce(lambda in_v, layer : layer.layer_output(in_v),
+                                self.layer_list, input_vec)
+    return self.output_vec
+    
+  def back_forward (self):
+    return 1
     
   
 ### test
@@ -82,9 +83,9 @@ nn1 = NeuralNet([(28*28, 50,  relu, relu_ddx),
                  (50,    100, relu, relu_ddx),
                  (100,   10,  softmax, softmax_loss)])
 
-print(nn1.layer_list[0].a)
+print(nn1.layer_list[1].w[0][0:5])
 print(nn1.forward(sample_in))
-print(nn1.layer_list[0].a)
+print(nn1.layer_list[1].w[0][0:5])
 
 
 
