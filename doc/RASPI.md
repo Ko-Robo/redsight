@@ -1,4 +1,5 @@
-## summary
+# RASPI
+## abstract
  raspberry pi(raspi) is a main intellect of this system, which processes image-processing, neural-net, communicating other hardware modules and so on.
  because of  its high level enviroment,  we think that using raspi make it easy  to programm it  than OS-less environment.
  
@@ -55,14 +56,7 @@ $ sudo
 $ sudo deluser -remove-home pi
 ```
 
-#### git
-
-#### dependmence tools
-language needed
-```
-
-Python 3.5.1 :: Anaconda 4.1.0 (64-bit)
-
-```
+#### Installing this system
+please read INSTALL.md
 
 #### test
