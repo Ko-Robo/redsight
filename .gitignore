@@ -207,3 +207,11 @@ ENV/
 .ropeproject
 
 *.pkl
+
+
+
+
+######## clisp ##############
+*.FASL
+*.fasl
+*.lisp-temp
