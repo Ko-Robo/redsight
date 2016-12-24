@@ -1,4 +1,4 @@
-# hoge-fuga
+# redsight
  Ko-Robo programming of second year student, made for Robocup-junior 2017.
 
 ### documentation
