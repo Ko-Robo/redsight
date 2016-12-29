@@ -1,7 +1,7 @@
 import numpy as np
 
 ### activation function
-def indentity_function(x):
+def idfunc(x):
   return x
 
 def step_function(x):
@@ -22,11 +22,15 @@ def softmax(a):
   return y
 
 ### d/dx
+def idfunc_ddx(y):
+  return np.ones_like(y)
+
 def sigmoid_ddx(y):
   return y*(1-y)
 
 def relu_ddx(y):
   return 1 * (y >= 0)
+
   
 
 ### error
@@ -42,6 +46,7 @@ def cross_entropy_error(y,t):
     t = t.argmax(axis=1)
 
   batch_size = y.shape[0]
+
   return -np.sum(np.log(y[np.arange(batch_size), t])) / batch_size
 
 ### loss

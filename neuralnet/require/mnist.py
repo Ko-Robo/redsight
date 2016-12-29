@@ -27,7 +27,6 @@ test_num = 10000
 img_dim = (1, 28, 28)
 img_size = 784
 
-
 def _download(file_name):
   file_path = dataset_dir + "/" + file_name
     
@@ -122,7 +121,7 @@ def load_mnist(normalize=True, flatten=True, one_hot_label=False):
     for key in ('train_img', 'test_img'):
       dataset[key] = dataset[key].reshape(-1, 1, 28, 28)
 
-      return (dataset['train_img'], dataset['train_label']), (dataset['test_img'], dataset['test_label']) 
+  return (dataset['train_img'], dataset['train_label']), (dataset['test_img'], dataset['test_label']) 
 
 
 ### test
