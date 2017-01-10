@@ -1,90 +1,61 @@
+# coding: utf-8
 import numpy as np
 
-### activation function
-def idfunc(x):
+
+def identity_function(x):
   return x
 
+
 def step_function(x):
-  return np.array(x > 0, dtype = np.int)
+  return np.array(x > 0, dtype=np.int)
+
 
 def sigmoid(x):
-  return 1 / (1 + np.exp(-x))
+  return 1 / (1 + np.exp(-x))    
 
-def relu (x):
-  return np.maximum(0,x)
 
-### output layer
-def softmax(a):
-  c = np.max(a)
-  exp_a = np.exp(a-c)
-  sum_exp_a = np.sum(exp_a)
-  y = exp_a / sum_exp_a
-  return y
+def sigmoid_grad(x):
+  return (1.0 - sigmoid(x)) * sigmoid(x)
+    
 
-### d/dx
-def idfunc_ddx(y):
-  return np.ones_like(y)
+def relu(x):
+  return np.maximum(0, x)
 
-def sigmoid_ddx(y):
-  return y*(1-y)
 
-def relu_ddx(y):
-  return 1 * (y >= 0)
+def relu_grad(x):
+  grad = np.zeros(x)
+  grad[x>=0] = 1
+  return grad
+    
 
-  
+def softmax(x):
+  if x.ndim == 2:
+    x = x.T
+    x = x - np.max(x, axis=0)
+    y = np.exp(x) / np.sum(np.exp(x), axis=0)
+    return y.T 
 
-### error
+  x = x - np.max(x) # オーバーフロー対策
+  return np.exp(x) / np.sum(np.exp(x))
+
+
 def mean_squared_error(y, t):
-  return 0.5*np.sum((y-t) ** 2)
+  return 0.5 * np.sum((y-t)**2)
 
-def cross_entropy_error(y,t):
-  
+
+def cross_entropy_error(y, t):
   if y.ndim == 1:
     t = t.reshape(1, t.size)
     y = y.reshape(1, y.size)
+        
+  # 教師データがone-hot-vectorの場合、正解ラベルのインデックスに変換
   if t.size == y.size:
     t = t.argmax(axis=1)
-    
-  delta = 1e-7
+
   batch_size = y.shape[0]
+  return -np.sum(np.log(y[np.arange(batch_size), t])) / batch_size
 
-  return -np.sum(np.log(np.abs(y[np.arange(batch_size), t]) + delta)) / batch_size
 
-### error d/dx
-def mean_squared_error_ddx (y, t):
-  return y - t
-
-def cross_entropy_error_ddx (y, t):
-  return y - t
-  
-### loss
-def softmax_loss(x, t):
-  y = softmax(x)
+def softmax_loss(X, t):
+  y = softmax(X)
   return cross_entropy_error(y, t)
-
-
-
-### test
-'''
-import matplotlib.pylab as plt
-
-x = np.arange(-5.0, 5.0, 0.1)
-y = []
-
-#y.append(indentity_function(x))
-#y.append(step_function(x))
-#y.append(sigmoid(x))
-#y.append(relu(x))
-
-#y.append(softmax(x))  # should x to be more random
-
-#y.append(sigmoid_ddx(x))
-#y.append(relu_ddx(x))
-
-#plt.ylim(-1.1, 1.1)
-for i in range(len(y)) :
-  print (y[i])
-  plt.plot(x,y[i])
-
-plt.show()
-'''
