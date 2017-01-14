@@ -1,3 +1,4 @@
+// test of moterdriver VNH2SP30
 // url reference : http://garagelab.com/profiles/blogs/tutorial-how-to-use-the-monster-moto-shield
 
 #include <SoftwareSerial.h>
