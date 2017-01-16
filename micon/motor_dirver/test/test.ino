@@ -34,20 +34,22 @@ for (int i=0; i<2; i++)
     digitalWrite(inBpin[i], LOW);
     }
 }
-
+int k = 0;
 void loop()                          
 {
 
   // Routine to increase the speedo of the motor
 
    while(true){
-      if (random(1,3)==1){
+     if (random(1,3)==1){
         motorGo(0, CW, random(0,255));
         motorGo(1, CW, random(0,255));
       } else {
         motorGo(0,CCW, random(0,255));
         motorGo(1,CCW, random(0,255));
-      }  // Increase the speed of the motor, according to the value of i is increasing                                                           
+      }  // Increase the speed of the motor, according to the value of i is increasing
+      
+      
       if (analogRead(cspin[0]) > CS_THRESHOLD) // If the motor locks, it will shutdown and...  
       {                                                                     // ...Resets the process of increasing the PWM
         motorOff(0);  
