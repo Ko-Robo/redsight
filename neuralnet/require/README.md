@@ -1,3 +1,6 @@
+##
+files in this directory includes handmade neural nets and tools for data sciences ,such as plotting graphs and so on.
+
 
 ## tested enviroments
 Python 3.5.1 :: Anaconda 4.1.0 (64-bit)
