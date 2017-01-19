@@ -28,6 +28,7 @@ xtest = X[index[index%2==0], :]
 yans = Y[index[index%2==0]]
 
 
+
 #### neuralnet
 class IrisChain(Chain):
   def __init__(self):
@@ -57,7 +58,7 @@ model = IrisChain()
 optimizer = optimizers.SGD()
 optimizer.setup(model)
 
-for j in range(1):
+for j in range(100):
   accum_loss = None
   sffindx = np.random.permutation(n)
   for i in range(0, n, bs):

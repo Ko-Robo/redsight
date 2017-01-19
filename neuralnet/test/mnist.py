@@ -19,7 +19,7 @@ from trainer import Trainer
 
 #### dataset 
 (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
-x_train = np.float32(x_train) 
+x_train = np.float32(x_train)
 t_train = np.float32(t_train)
 
 #### neuralnet
@@ -30,9 +30,19 @@ class MnistNet (Chain):
       l2=L.Linear(100, 100),
       l3=L.Linear(100,10),
     )
-  def __call__(self, x, y):
-    o = self.forward(x)
-    return F.mean_squared_error(self.forward(x), y)
+  def __call__(self, x, t):
+    return F.mean_squared_error(self.forward(x), t)
+    '''
+    y = self.forward(x)
+    #print(y.data)
+    print(type(y[0:0]))
+    print(y[0].data)
+    print(type(t[0]))
+    print(t[0])
+    e = F.softmax_cross_entropy(y, t)
+    print(e)
+    return e
+    '''
 
   def forward(self, x):
     h1 = F.relu(self.l1(x))

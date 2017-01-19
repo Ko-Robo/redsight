@@ -41,7 +41,7 @@ class SimpleCNN:
     self.params['W3'] = weight_init_std * \
       np.random.randn(hidden_size, output_size)
     self.params['b3'] = np.zeros(output_size)
-
+    
     # layers
     self.layers = OrderedDict()
     self.layers['conv1'] = Convolution(self.params['W1'], self.params['b1'],
@@ -56,6 +56,7 @@ class SimpleCNN:
     
 
     self.last_layer = SoftmaxWithLoss()
+    #self.last_layer = MeanSqaredError()
     
   def predict(self, x):
     for layer in self.layers.values():
@@ -116,7 +117,7 @@ network = SimpleCNN()
 #trainer = Trainer(network, x_train, t_train, x_test, t_test)
 trainer = Trainer(network, x_train, t_train, x_test, t_test,
                   optimizer='momentum', optimizer_param={'lr':0.01,'momentum':0.9},
-                  epoches=2)
+                  epoches=10)
 
 
 

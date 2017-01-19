@@ -22,7 +22,7 @@ def plot_w_activation(linears):
   plt.show()
 
 
-'''
+
 def show_filter(filters, nx=8, margin=3, scale=10):
   FN, C, FH, FW = filters.shape
   ny = int(np.ceil(FN / nx))
@@ -34,5 +34,4 @@ def show_filter(filters, nx=8, margin=3, scale=10):
     ax = fig.add_subplot(ny, nx, i+1, xticks=[], yticks=[])
     ax.imshow(filters[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
   plt.show()
-'''
 
