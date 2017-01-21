@@ -65,21 +65,35 @@ public:
 
 //// test 
 
+/* sample of pin structure
+motor_a -> vnh2sp30(0)
+dp2   -> digital5 (pwm)
+dp14  -> digital8 (rotate_direction)
+dp13  -> digital7 (rotate_direction)
+
+motor_b -> vnh2sp30(0)
+dp1   -> digital6 (pwm)
+dp11  -> digital4 (rotate_direction)
+dp10  -> digital9 (rotate_direction)
+
+*/
+
 int main() {
   
   Motor motor_a(dp2, dp14, dp13);
+  Motor motor_b(dp1, dp11, dp10);
+  //Motor motor_c()
   
   while(1) {
     motor_a.run(0.8);
+    motor_b.run(0.8);
     wait_ms(500);
 
-    motor_a.run(0.1);
-    wait_ms(500);
     
     motor_a.run(-0.8);
+    motor_b.run(-0.8);
     wait_ms(500);
-    
-    motor_a.run(-0.1);
-    wait_ms(500);    
+
+
   }
 }
