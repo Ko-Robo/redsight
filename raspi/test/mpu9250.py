@@ -11,6 +11,14 @@ import time
 
 # http://qiita.com/boyaki_machine/items/915f7730c737f2a5cc79
 
+# pins
+# VDD : 5v
+# GND : GND
+# SCL : SCL
+# SDA : SDA
+# ADD : GND
+# NCS : 5v
+
 
 class SL_MPU9250:
     # 定数宣言

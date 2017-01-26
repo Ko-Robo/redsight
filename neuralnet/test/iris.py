@@ -39,11 +39,10 @@ class IrisChain(Chain):
 
   def __call__(self, x,y):
     o = self.forward(x)
-    print(o.shape)
-    print(y.shape)
     return F.mean_squared_error(o, y)
 
   def forward(self, x):
+    print(x.shape, self.l1.W.data.shape)
     h1 = F.sigmoid(self.l1(x))
     h2 = self.l2(h1)
     h3 = F.softmax(h2)
@@ -79,7 +78,7 @@ ans = yt.data
 
 nrow, ncol = ans.shape
 ok = 0
-for i in range(nrow):
+for i in range(1):
   cls = np.argmax(ans[i,:])
   if cls == yans[i]:
     ok += 1
